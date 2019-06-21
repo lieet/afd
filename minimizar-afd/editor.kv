@@ -1,0 +1,32 @@
+Root:
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: (1, 1)
+        Button:
+            text: 'Ler arquivo'
+            on_release: root.show_load()
+        Button:
+            text: 'Gerar automato original'
+            on_release: root.imagemOriginal()
+        Button:
+            text: 'Gerar automato minimizado'
+            on_release: root.imagemMinimizada()
+
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: 'vertical'
+        FileChooserListView:
+            id: filechooser
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: 'Cancelar'
+                on_release: root.cancel()
+
+            Button:
+                text: 'Ler Arquivo'
+                on_release: root.load(filechooser.path, filechooser.selection)
